@@ -15,7 +15,7 @@ spec:
 spec:
     containers:
       - name: 10519875-frontend
-        image: ca-frontend #cab8it148.azurecr.io/10519875-frontend
+        image: cab8it148.azurecr.io/10519875-frontend
         imagePullPolicy: Always
         ports:
           - containerPort: 80
