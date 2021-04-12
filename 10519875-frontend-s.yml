@@ -37,7 +37,7 @@ spec:
    selector:
         deployment-name: 10519875-frontend-s
 
-        ---
+---
 apiVersion: v1
 kind: Service
 metadata:
