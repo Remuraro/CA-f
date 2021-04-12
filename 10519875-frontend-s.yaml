@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 10519875-frontend-s
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment-name: 10519875-frontend-s
+  template:
+    metadata:
+      labels:
+        deployment-name: 10519875-frontend-s
+spec:
+    containers:
+      - name: 10519875-frontend-s
+        image: ca-frontend #cab8it148.azurecr.io/10519875-frontend-s
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+labels:
+   service-label: 10519875-frontend-s-cluster
+name: 10519875-frontend-s-cluster-loadbalancer
+
+spec:
+   type: LoadBalancer
+   ports:
+     - name: 10519875-frontend-s-loadbalancer
+       protocol: TCP
+       port: 80
+       targetPort: 80
+   selector:
+        deployment-name: 10519875-frontend-s
+
+        ---
+apiVersion: v1
+kind: Service
+metadata:
+labels:
+   service-label: 10519875-frontend-s-cluster
+name: 10519875-frontend-s-cluster
+
+spec:
+   type: ClusterIP
+   ports:
+     - name: 10519875-frontend-s-cluster-port
+       protocol: TCP
+       port: 80
+   selector:
+        deployment-name: 10519875-frontend-s
+
+
+
+
+
+
+

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AddAdvertsComponent } from './add-adverts.component';
 
 describe('AddAdvertsComponent', () => {

@@ -6,15 +6,16 @@ import { AdvertsComponent } from './pages/adverts/adverts.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+      imports: [ RouterTestingModule],
       declarations: [
         AppComponent
       ],
       providers: [ AdvertsComponent]
     }).compileComponents();
   });
+
+  /*fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;*/
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
