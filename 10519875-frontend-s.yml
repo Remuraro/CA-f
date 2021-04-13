@@ -1,8 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 10519875-frontend-s
-  
+  name: 10519875-frontend-s 
 spec:
   replicas: 1
   selector:
@@ -12,51 +11,41 @@ spec:
     metadata:
       labels:
         deployment-name: 10519875-frontend-s
-spec:
-    containers:
-      - name: 10519875-frontend-s
-        image: cab8it148.azurecr.io/10519875-frontend-s
-        imagePullPolicy: Always
-        ports:
-          - containerPort: 80
+    spec:
+      containers:
+        - name: 10519875-frontend-s
+          image: cab8it148.azurecr.io/10519875-frontend-s
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-labels:
-   service-label: 10519875-frontend-s-cluster
-name: 10519875-frontend-s-cluster-loadbalancer
-
+  labels:
+    service-label: 10519875-frontend-s-cluster-service
+  name: 10519875-frontend-s-cluster-service-loadbalancer
 spec:
-   type: LoadBalancer
-   ports:
-     - name: 10519875-frontend-s-loadbalancer
-       protocol: TCP
-       port: 80
-       targetPort: 80
-   selector:
-        deployment-name: 10519875-frontend-s
-
+  type: LoadBalancer
+  ports:
+  - name: 10519875-frontend-s-loadbalancer-service-port
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    deployment-name: 10519875-frontend-s
 ---
 apiVersion: v1
 kind: Service
 metadata:
-labels:
-   service-label: 10519875-frontend-s-cluster
-name: 10519875-frontend-s-cluster
-
+  labels:
+    service-label: 10519875-frontend-s-cluster-service
+  name: 10519875-frontend-s-cluster-service
 spec:
-   type: ClusterIP
-   ports:
-     - name: 10519875-frontend-s-cluster-port
-       protocol: TCP
-       port: 80
-   selector:
-        deployment-name: 10519875-frontend-s
-
-
-
-
-
-
-
+  type: ClusterIP
+  ports:
+  - name: 10519875-frontend-s-cluster-service-port
+    port: 80
+    protocol: TCP
+  selector:
+    deployment-name: 10519875-frontend-s
