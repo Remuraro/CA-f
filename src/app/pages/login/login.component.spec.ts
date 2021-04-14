@@ -29,8 +29,13 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
+  // Test case 1
   it('should create', () => {
     expect(component).toBeTruthy();
-    $('.username').text("renata");
+    component.username = "renata@test.com";
+    $('.login').click();
+    expect(component.error).toBe("Both email and password are required to login");
+    $('.login').click();
+    //$('.username').text("renata");
   });
 });

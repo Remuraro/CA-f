@@ -28,6 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-#launch the application CA API node app.js pass all the arguments:
+## launch the application CA API node app.js pass all the arguments:
 npm install
-node app.js or npm run start http://localhost:4200 http://localhost:9876 mongodb http://localhost:27017/ca-db
+npm run start http://localhost:4200 http://localhost:9876 mongodb http://localhost:27017/ca-db
+
